@@ -28,10 +28,12 @@ public class PlayerController : MonoBehaviour
 
         float distanceBetweenRover_Player = Vector3.Distance(Rover.position, transform.position);
 
-        if(distanceBetweenRover_Player <= FindRoverRadius)
-        {
-            agent.SetDestination(Rover.position);
-        }
+        agent.SetDestination(Rover.position);
+
+        //if (distanceBetweenRover_Player <= FindRoverRadius)
+        //{
+        //    agent.SetDestination(Rover.position);
+        //}
 
         FaceRover();
     }
