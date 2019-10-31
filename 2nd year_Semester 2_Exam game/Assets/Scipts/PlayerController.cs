@@ -8,34 +8,36 @@ public class PlayerController : MonoBehaviour
     public Transform Rover;
     NavMeshAgent agent;
 
+    public bool Moving;
+
     public float FindRoverRadius = 10f;
 
-
+    private Vector3 LastPos;
 
     private void Start()
     {
         Rover = PlayerManager.instance.Rover.transform;
         agent = GetComponent<NavMeshAgent>();
+        LastPos = agent.velocity;
     }
 
     private void FixedUpdate()
     {
-        //Vector3 dir = Rover.position - transform.position;
-        //dir.y = 0; 
-        //Quaternion rot = Quaternion.LookRotation(dir);
-        //transform.rotation = Quaternion.Slerp(transform.rotation, rot, 2 * Time.deltaTime);
-
-
         float distanceBetweenRover_Player = Vector3.Distance(Rover.position, transform.position);
 
         agent.SetDestination(Rover.position);
-
-        //if (distanceBetweenRover_Player <= FindRoverRadius)
-        //{
-        //    agent.SetDestination(Rover.position);
-        //}
-
         FaceRover();
+ 
+        var CurrentPos = agent.velocity;
+        if(CurrentPos == LastPos)
+        {
+            Moving = false;
+        }
+        else
+        {
+            Moving = true;
+        }
+        LastPos = CurrentPos;
     }
 
 
