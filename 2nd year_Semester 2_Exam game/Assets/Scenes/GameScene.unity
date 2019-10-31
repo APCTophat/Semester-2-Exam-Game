@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 156157159}
   - component: {fileID: 156157161}
   - component: {fileID: 156157160}
+  - component: {fileID: 156157162}
   m_Layer: 0
   m_Name: Rover
   m_TagString: Untagged
@@ -239,7 +240,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156157157}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.07, y: 1.29, z: 0}
+  m_LocalPosition: {x: -9.07, y: 2.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 547742419}
@@ -262,7 +263,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 3
 --- !u!65 &156157160
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -294,6 +295,20 @@ MonoBehaviour:
   MAX_Z_Rot: 0
   MAX_X_Rot: 45
   isGrounded: 0
+  isOnWheels: 0
+--- !u!65 &156157162
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156157157}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6520014, y: 0.6632614, z: 1.1769812}
+  m_Center: {x: 0.049304485, y: -0.3990612, z: -0.2709973}
 --- !u!1 &237404284
 GameObject:
   m_ObjectHideFlags: 0
@@ -841,12 +856,8 @@ MonoBehaviour:
   Player: {fileID: 1571828028}
   isMoving: 0
   MaxXrot: 65
-  Amplitude: 0.2
-  Frequency: 0.2
-  DefaultHight: 3.046961
-  LerpRate: 0.5
-  PingPongTime: 1
-  BobRange: 0.5
+  bobtime: 5
+  bobhight: 0.25
 --- !u!1 &966013011
 GameObject:
   m_ObjectHideFlags: 0
@@ -1031,7 +1042,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 983546540}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1001618856
+--- !u!1 &1286908737
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1039,104 +1050,36 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1001618861}
-  - component: {fileID: 1001618860}
-  - component: {fileID: 1001618859}
-  - component: {fileID: 1001618858}
-  - component: {fileID: 1001618857}
+  - component: {fileID: 1286908739}
+  - component: {fileID: 1286908738}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: ResourceManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1001618857
+--- !u!114 &1286908738
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1001618856}
+  m_GameObject: {fileID: 1286908737}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfe57325f0d2a9c48beea101a809ba1a, type: 3}
+  m_Script: {fileID: 11500000, guid: 30b374a216afc424bb6464f3e42f11b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMoving: 0
-  LerpRate: 0.2
-  DefaultHight: 10
-  offset: 1
-  period: 1
-  hight: 1
---- !u!65 &1001618858
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1001618856}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1001618859
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1001618856}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1001618860
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1001618856}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1001618861
+--- !u!4 &1286908739
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1001618856}
+  m_GameObject: {fileID: 1286908737}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.1717033, y: 10, z: -5.0156374}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1303,6 +1246,7 @@ GameObject:
   - component: {fileID: 1571828030}
   - component: {fileID: 1571828031}
   - component: {fileID: 1571828032}
+  - component: {fileID: 1571828033}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1366,7 +1310,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1571828028}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.2
+  m_Radius: 0.44
   m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
@@ -1375,10 +1319,23 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 3.17
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &1571828033
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571828028}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 3.1521773, z: 0.35341644}
+  m_Center: {x: 0, y: 0.65434957, z: 0.024013996}
 --- !u!1 &1804489734
 GameObject:
   m_ObjectHideFlags: 0
@@ -1893,7 +1850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7173d3b4b97e404aa23d7e60c1cfc6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayersEyes: {fileID: 1001618861}
+  PlayersEyes: {fileID: 867254108}
   theCamera: {fileID: 2142401514}
 --- !u!23 &425821361226699587
 MeshRenderer:
@@ -2190,7 +2147,7 @@ GameObject:
   - component: {fileID: 6604516318898180996}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
