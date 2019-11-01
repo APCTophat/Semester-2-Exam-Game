@@ -22,7 +22,7 @@ public class RoverTrackers : MonoBehaviour
         transform.LookAt(Rover);
         isMoving = Player.GetComponent<PlayerController>().Moving;
         CamerDefault = new Vector3(transform.position.x, Player.transform.position.y + 2, transform.position.z);
-       // CameraBob();   ///turn on for camera bob
+        CameraBob();   ///turn on for camera bob
         if (transform.localEulerAngles.x >= MaxXrot && transform.localEulerAngles.x <= 180)
         {
             this.transform.localEulerAngles = new Vector3(MaxXrot, transform.rotation.y, transform.rotation.z);
@@ -35,7 +35,7 @@ public class RoverTrackers : MonoBehaviour
     {
         if (isMoving)
         {
-            transform.position = CamerDefault - Vector3.up * Mathf.Sin((Time.fixedTime) * bobtime) * bobhight;
+            transform.position = Vector3.Lerp (transform.position, CamerDefault - Vector3.up * Mathf.Sin((Time.fixedTime) * bobtime) * bobhight, 5* Time.deltaTime);
         }
     }
 }
