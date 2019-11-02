@@ -16,7 +16,15 @@ public class RoverTrackers : MonoBehaviour
     
    
     Vector3 CamerDefault;
-  
+
+
+    private void Start()
+    {
+        Player = PlayerManager.instance.Player;
+        Rover = PlayerManager.instance.Rover.transform;
+    }
+
+
     private void Update()
     {
         transform.LookAt(Rover);

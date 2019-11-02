@@ -6,6 +6,9 @@ public class RoverController : MonoBehaviour
 {
     Rigidbody rb;
 
+    public GameObject Scanner;
+    public GameObject ReasourceManager;
+
     public float DriverSpeed;
     public float RotationAngle;
     public float RotationSpeed;
@@ -20,8 +23,9 @@ public class RoverController : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>(); 
-        
+        rb = GetComponent<Rigidbody>();
+        Scanner = PlayerManager.instance.Scanner;
+        ReasourceManager = PlayerManager.instance.ReasourceManager;
     }
 
    
@@ -30,6 +34,7 @@ public class RoverController : MonoBehaviour
     {
         float Drive = Input.GetAxis("RoverDriver");
         float Rotater = Input.GetAxis("RoverRotater") * RotationAngle;
+        ScannerController();
 
         if (isOnWheels)
         {
@@ -97,5 +102,13 @@ public class RoverController : MonoBehaviour
         isOnWheels = false;
     }
 
+    void ScannerController()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Scanner.GetComponent<ScannerScript>().PlayAnimation();
+            ReasourceManager.GetComponent<ResourceManagerScript>().ScanForReasources();
 
+        }
+    }
 }

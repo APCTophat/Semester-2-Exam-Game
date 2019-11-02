@@ -7,16 +7,8 @@ public class ScannerScript : MonoBehaviour
 
     public ParticleSystem ScanWave;
 
-    private void OnTriggerEnter(Collider other)
+    public void PlayAnimation()
     {
-        Debug.Log("find");
-    }
-
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.Q))
-        {
-          //  ScanWave.emission.enabled = true;
-        }
+        ScanWave.Emit(500);
     }
 }

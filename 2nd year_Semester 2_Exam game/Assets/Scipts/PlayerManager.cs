@@ -16,4 +16,7 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     public GameObject Rover;
+    public GameObject Player;
+    public GameObject Scanner;
+    public GameObject ReasourceManager;
 }
