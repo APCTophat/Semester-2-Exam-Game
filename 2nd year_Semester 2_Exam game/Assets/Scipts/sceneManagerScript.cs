@@ -20,21 +20,25 @@ public class sceneManagerScript : MonoBehaviour
 
     public void LoadGameScene()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(GameSceneName);
     }
 
     public void LoadCrontrolsScene()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(ControlsScene);
     }
 
     public void LoadMenuScene()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(MenuSceneName);
     }
 
     public void LoadEndCreditScene()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(EndCreditSceneName);
     }
 }

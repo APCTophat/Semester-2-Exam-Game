@@ -34,7 +34,6 @@ public class RoverTrackers : MonoBehaviour
         if (transform.localEulerAngles.x >= MaxXrot && transform.localEulerAngles.x <= 180)
         {
             this.transform.localEulerAngles = new Vector3(MaxXrot, transform.rotation.y, transform.rotation.z);
-            Debug.Log("broken Nek");
         }
     }
 
