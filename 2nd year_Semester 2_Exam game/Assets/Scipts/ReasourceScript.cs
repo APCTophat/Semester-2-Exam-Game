@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ReasourceScript : MonoBehaviour
 {
-
     public bool isFood;
     public bool isFuel;
     public bool isGold;
@@ -23,17 +22,31 @@ public class ReasourceScript : MonoBehaviour
         Fuel.SetActive(false);
         Gold.SetActive(false);
 
+        int index = Random.Range(1, 4);
+        if(index == 1)
+        {
+            isFood = true;
+        }
+        else if(index == 2)
+        {
+            isFuel = true;
+        }
+        else if(index == 3)
+        {
+            isGold = true;
+        }
 
+       
         RaycastHit CheckGroundDist;
-
         if(Physics.Raycast(transform.position, Vector3.down, out CheckGroundDist))
         {
             var GroundDist = CheckGroundDist.distance;
             var CurrentPos = transform.position;
             transform.position = new Vector3(transform.position.x, CurrentPos.y - GroundDist, transform.position.z);
         }
-    }
 
+
+    }
     
     void Update()
     {
@@ -48,19 +61,22 @@ public class ReasourceScript : MonoBehaviour
         if (isFood)
         {
             Food.SetActive(true);
+            ReasourseAmount = Random.Range(AmountMin, AmountMax);
         }
         else if (isFuel)
         {
             Fuel.SetActive(true);
+            ReasourseAmount = Random.Range(AmountMin, AmountMax);
         }
         else if (isGold)
         {
             Gold.SetActive(true);
+            ReasourseAmount = Random.Range(AmountMin, AmountMax);
         }
     }
 
-    public void DestroyReasource()
-    {
-        Destroy(gameObject);
-    }
+    //public void DestroyReasource()
+    //{
+    //    Destroy(gameObject);
+    //}
 }
