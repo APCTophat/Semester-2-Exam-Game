@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ResourceManagerScript : MonoBehaviour
 {
@@ -28,13 +29,38 @@ public class ResourceManagerScript : MonoBehaviour
     public float AmountOfReasources;
 
     public float Food_Reasource;
+    public float MaxFood;
     public float Fuel_reasource;
+    public float MaxFuel;
     public float Gold_Reasource;
+    
+
+
+    /////// Menu UI////////
+    public Image FoodBar;
+    public Image FuelBar;
+
+    public Text GoldAmount;
+
+    public float FoodStartAmount;
+    public float FoodContantBurnAmount;
+    public float FuelStartAmount;
+   //public float FuelConstantBurnAmount;
+    public float FuelActionBurnAmount;
+
+ 
+    public float FoodFillAmount;
+    public float FuelFillAMount;
+   
 
     private void Start()
     {
         Rover = PlayerManager.instance.Rover;
         InitialSpawnReasource();
+
+        Food_Reasource = FoodStartAmount;
+        Fuel_reasource = FuelStartAmount;
+        Gold_Reasource = 0f;
     }
 
     private void Update()
@@ -45,6 +71,12 @@ public class ResourceManagerScript : MonoBehaviour
         {
             DestroyClosestReasource(theReasources);
         }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            SpawnAReasource();
+        }
+
+        MenuUpdater();
     }
 
     public void ScanForReasources()
@@ -58,6 +90,8 @@ public class ResourceManagerScript : MonoBehaviour
                 theReasources[i].GetComponent<ReasourceScript>().Active();
             }
         }
+
+        Fuel_reasource -= FuelActionBurnAmount;
     }
 
 
@@ -71,6 +105,11 @@ public class ResourceManagerScript : MonoBehaviour
         }
     }
 
+    public void SpawnAReasource()
+    {
+        GameObject NewReasource = Instantiate(ReasourceSource, new Vector3(Random.Range(XSpawnMIn, XSpawnMax), 20, Random.Range(ZSpawnMin, ZSpawnMax)), Quaternion.identity);
+        theReasources.Add(NewReasource);
+    }
 
     public void DestroyClosestReasource(List<GameObject> theReasource)
     {
@@ -115,5 +154,26 @@ public class ResourceManagerScript : MonoBehaviour
             theReasource.Remove(nearest);
             Destroy(nearest.gameObject);
         }
+    }
+
+    public void MenuUpdater()
+    {
+
+        if(Food_Reasource >= MaxFood)
+        {
+            Food_Reasource = MaxFood;
+        }
+        Food_Reasource = Food_Reasource - FoodContantBurnAmount * Time.deltaTime;
+        FoodFillAmount = Food_Reasource / MaxFood;
+        FoodBar.fillAmount = FoodFillAmount;
+
+        if(Fuel_reasource >= MaxFuel)
+        {
+            Fuel_reasource = MaxFuel;
+        }
+        FuelFillAMount = Fuel_reasource / MaxFuel;
+        FuelBar.fillAmount = FuelFillAMount;
+
+        GoldAmount.text = Gold_Reasource.ToString();
     }
 }

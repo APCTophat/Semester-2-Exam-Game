@@ -16,6 +16,11 @@ public class ReasourceScript : MonoBehaviour
     public int AmountMax;
     public int AmountMin;
 
+    public ParticleSystem FoodPillarParticles;
+    public ParticleSystem FuelPillarParticles;
+    public ParticleSystem GoldPillarParticles;
+    public float SizeDivider;
+
     void Start()
     {
         Food.SetActive(false);
@@ -36,16 +41,8 @@ public class ReasourceScript : MonoBehaviour
             isGold = true;
         }
 
-       
-        RaycastHit CheckGroundDist;
-        if(Physics.Raycast(transform.position, Vector3.down, out CheckGroundDist))
-        {
-            var GroundDist = CheckGroundDist.distance;
-            var CurrentPos = transform.position;
-            transform.position = new Vector3(transform.position.x, CurrentPos.y - GroundDist, transform.position.z);
-        }
-
-
+        MoveToGroundLevel();
+      
     }
     
     void Update()
@@ -62,21 +59,47 @@ public class ReasourceScript : MonoBehaviour
         {
             Food.SetActive(true);
             ReasourseAmount = Random.Range(AmountMin, AmountMax);
+            float AmountPercentage = ReasourseAmount / 5;
+            var main = FoodPillarParticles.main;
+            main.startSize = AmountPercentage ;
+          
         }
         else if (isFuel)
         {
             Fuel.SetActive(true);
             ReasourseAmount = Random.Range(AmountMin, AmountMax);
+            float AmountPercentage = ReasourseAmount / 5;
+            var main = FuelPillarParticles.main;
+            main.startSize = AmountPercentage;
+
         }
         else if (isGold)
         {
             Gold.SetActive(true);
             ReasourseAmount = Random.Range(AmountMin, AmountMax);
+            float AmountPercentage = ReasourseAmount / 5;
+            var main = GoldPillarParticles.main;
+            main.startSize = AmountPercentage;
+           
         }
     }
 
-    //public void DestroyReasource()
-    //{
-    //    Destroy(gameObject);
-    //}
+
+    public void MoveToGroundLevel()
+    {
+        RaycastHit CheckGroundDist;
+        if (Physics.Raycast(transform.position, Vector3.down, out CheckGroundDist))
+        {
+            var GroundDist = CheckGroundDist.distance;
+            var CurrentPos = transform.position;
+            transform.position = new Vector3(transform.position.x, CurrentPos.y - GroundDist, transform.position.z);
+        }
+
+        if (transform.position.y >= 10)
+        {
+            transform.position = new Vector3(Random.Range(-140, 140), 20, Random.Range(-140, 140));
+            MoveToGroundLevel();
+        }
+    }
+  
 }

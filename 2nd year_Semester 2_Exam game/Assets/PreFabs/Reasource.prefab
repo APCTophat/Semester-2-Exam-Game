@@ -348,7 +348,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 15
+      scalar: 0
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -9625,6 +9625,10 @@ MonoBehaviour:
   ReasourseAmount: 0
   AmountMax: 100
   AmountMin: 1
+  FoodPillarParticles: {fileID: 1924370125034745414}
+  FuelPillarParticles: {fileID: 1924370125629927908}
+  GoldPillarParticles: {fileID: 1924370124128671727}
+  SizeDivider: 5
 --- !u!1 &1924370125034745417
 GameObject:
   m_ObjectHideFlags: 0
@@ -9909,7 +9913,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 15
+      scalar: 0
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -19415,7 +19419,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 15
+      scalar: 0
       minScalar: 1
       maxCurve:
         serializedVersion: 2
