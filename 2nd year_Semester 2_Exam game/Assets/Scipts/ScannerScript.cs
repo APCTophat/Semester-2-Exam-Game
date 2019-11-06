@@ -9,6 +9,6 @@ public class ScannerScript : MonoBehaviour
 
     public void PlayAnimation()
     {
-        ScanWave.Emit(500);
+        ScanWave.Emit(1);
     }
 }

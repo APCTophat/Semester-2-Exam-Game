@@ -19,4 +19,5 @@ public class PlayerManager : MonoBehaviour
     public GameObject Player;
     public GameObject Scanner;
     public GameObject ReasourceManager;
+    public GameObject SceneManager;
 }

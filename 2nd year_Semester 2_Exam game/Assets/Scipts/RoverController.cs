@@ -19,6 +19,7 @@ public class RoverController : MonoBehaviour
     public bool isGrounded;
     public bool isOnWheels;
 
+    public AudioSource Breathing;
     
 
     void Start()
@@ -26,6 +27,7 @@ public class RoverController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         Scanner = PlayerManager.instance.Scanner;
         ReasourceManager = PlayerManager.instance.ReasourceManager;
+        StartCoroutine("PlaySound");
     }
 
    
@@ -45,7 +47,7 @@ public class RoverController : MonoBehaviour
 
         CheckIfGrounded();
          
-        if (Input.GetKeyDown(KeyCode.P) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.F) && isGrounded)
         {
             isGrounded = false;
             rb.useGravity = false;
@@ -53,6 +55,12 @@ public class RoverController : MonoBehaviour
         }
     }
 
+    IEnumerator PlaySound()
+    {
+        Breathing.Play();
+        yield return new WaitForSeconds(Random.Range(30,50));
+        StartCoroutine("PlaySound");
+    }
  
 
  

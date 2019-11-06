@@ -21,6 +21,8 @@ public class ReasourceScript : MonoBehaviour
     public ParticleSystem GoldPillarParticles;
     public float SizeDivider;
 
+    public AudioSource Clink;
+
     void Start()
     {
         Food.SetActive(false);
@@ -55,6 +57,7 @@ public class ReasourceScript : MonoBehaviour
 
     public void Active()
     {
+        Clink.Play();
         if (isFood)
         {
             Food.SetActive(true);
