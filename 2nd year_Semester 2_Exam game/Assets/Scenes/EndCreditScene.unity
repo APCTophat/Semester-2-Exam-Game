@@ -154,8 +154,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 272.28, y: -178}
-  m_SizeDelta: {x: 236.4, y: 48.5}
+  m_AnchoredPosition: {x: 195.26, y: -147.92009}
+  m_SizeDelta: {x: 390.43, y: 108.66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &17543822
 MonoBehaviour:
@@ -189,7 +189,8 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Font-Cyberspace Raceway Back - Chequered Ink \nFind Sound- sqeeeek_bell_ting2.wav-
-    sqeeeek\n "
+    sqeeeek\nPickUp Sound- sqeeeek_bell_ting1.Wav-sqeeeek\nIn Game Song- LAKEY INSPIRED\r:
+    \"Days Like These\"\nMenu Song- MorningLightMusic: \"Upbeat\""
 --- !u!222 &17543823
 CanvasRenderer:
   m_ObjectHideFlags: 0

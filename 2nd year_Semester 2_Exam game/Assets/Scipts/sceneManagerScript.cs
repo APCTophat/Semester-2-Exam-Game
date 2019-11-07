@@ -12,7 +12,6 @@ public class sceneManagerScript : MonoBehaviour
     public string MenuSceneName;
     public string EndCreditSceneName;
 
-
     public void Quit()
     {
         Application.Quit();

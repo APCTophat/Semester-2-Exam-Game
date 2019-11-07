@@ -56,6 +56,9 @@ public class ResourceManagerScript : MonoBehaviour
  
     public float FoodFillAmount;
     public float FuelFillAMount;
+
+    public AudioSource Clank;
+    public GameObject Light;
    
 
     private void Start()                           //finds Rover, Spawns initial Reasources, sets initial survival variables
@@ -175,6 +178,7 @@ public class ResourceManagerScript : MonoBehaviour
             {
                 Gold_Reasource += AmountOfReasources;
             }
+            Clank.Play();
             theReasource.Remove(nearest);
             Destroy(nearest.gameObject);
         }
@@ -195,7 +199,10 @@ public class ResourceManagerScript : MonoBehaviour
         {
             Fuel_reasource = MaxFuel;
         }
-        //Fuel_reasource = Fuel_reasource - FuelConstantBurnAmount * Time.deltaTime;
+        if (!Light.GetComponent<DayNightCycle>().isDay)
+        {
+            //Fuel_reasource = Fuel_reasource - FuelConstantBurnAmount * Time.deltaTime;
+        }
         FuelFillAMount = Fuel_reasource / MaxFuel;
         FuelBar.fillAmount = FuelFillAMount;
 

@@ -22,6 +22,7 @@ public class ReasourceScript : MonoBehaviour
     public float SizeDivider;
 
     public AudioSource Clink;
+    public AudioSource Clank;
 
     void Start()
     {
@@ -46,15 +47,9 @@ public class ReasourceScript : MonoBehaviour
         MoveToGroundLevel();
       
     }
-    
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.M))
-        {
-            Active();
-        }
-    }
 
+
+   
     public void Active()
     {
         Clink.Play();
@@ -104,5 +99,5 @@ public class ReasourceScript : MonoBehaviour
             MoveToGroundLevel();
         }
     }
-  
+
 }
